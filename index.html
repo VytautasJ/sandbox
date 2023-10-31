@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLoC Test</title>
+</head>
+<body>
+    <h1>Welcome to the FLoC Test Site</h1>
+    <button onclick="addToInterestGroup()">Join Interest Group</button>
+
+    <script>
+        function addToInterestGroup() {
+            if ('joinAdInterestGroup' in navigator) {
+                navigator.joinAdInterestGroup({
+                    owner: 'your-domain.com',
+                    name: 'sample-group',
+                    ads: [{renderUrl: 'https://your-ad-url.com', metadata: {}}],
+                }, 30 * 24 * 3600 * 1000);
+                
+                alert("Added to interest group!");
+            } else {
+                alert("FLoC API not supported in this browser.");
+            }
+        }
+    </script>
+</body>
+</html>
